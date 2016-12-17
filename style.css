@@ -23,7 +23,6 @@ button {
 }
 
 #grid {
-    background-color: pink;
     width: 750px;
     margin: 0 auto;
 }
@@ -31,7 +30,7 @@ button {
 td {
     width: 40px;
     height: 40px;
-    background-color: purple;
+    background-color: #ddd;
     margin: 3px;
     display: inline-block;
 }
