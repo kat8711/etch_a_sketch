@@ -1,0 +1,52 @@
+.header {
+    margin: 0 auto;
+    padding: 10px auto;
+    width: 600px;
+}
+
+h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 50px;
+    color: #444;
+}
+
+.buttons {
+    width: 400px;
+    margin: 0 auto;
+}
+
+button {
+    margin: 10px;
+    height: 40px;
+    width: 90px;
+
+}
+
+#grid {
+    background-color: pink;
+    width: 750px;
+    margin: 0 auto;
+}
+
+td {
+    width: 40px;
+    height: 40px;
+    background-color: purple;
+    margin: 3px;
+    display: inline-block;
+}
+
+tr {
+    margin: 0px;
+    padding: 0px;
+}
+
+table {
+    margin: 0 auto;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #444;
+}
+
+
+
