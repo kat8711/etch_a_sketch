@@ -1,30 +1,25 @@
-console.log("Hello!");
-
 $(document).ready(function()
 {
-    var tableSize = 16;
-    var position = 0;
+    var tableSize = prompt("Enter a grid size (2-64):");
     var id;
     var cell;
+
+    // adjust cell size based on tableSize
+    var cellSize = (800/tableSize);
+    console.log(cellSize);
+
+    $('h1').click(function() {
+        $('h1').css('color','orange');
+    $('div.cell').width(cellSize);
+    $('div.cell').height(cellSize);
+});
 
     // set default color to 'rainbow'
     var color = "rainbow";
     $('button#rainbow').attr('class','selected');
     $('button#black').attr('class','unselected');
 
-    // draw the grid
-    $("#grid").append("<table>")
-    for (i = 1; i <= tableSize; i++)
-    {
-       $("#grid").append("<tr>");
-       for (j = 1; j <= tableSize; j++)
-       {
-        $("#grid").append("<td id =" + position + "></td>");
-        position++;
-       }
-       $("#grid").append("</tr>")
-    }
-    $("#grid").append("</table>");
+    drawGrid(tableSize);
 
 
     // color scheme changes when buttons are clicked
@@ -67,6 +62,26 @@ $(document).ready(function()
 
 });
 
+// function to draw the grid
+var drawGrid = function(tableSize) {
+    var position = 0;
+    $("#grid").append("<table>")
+    for (i = 1; i <= tableSize; i++)
+    {
+       $("#grid").append("<tr>");
+       for (j = 1; j <= tableSize; j++)
+       {
+        $("#grid").append("<td id =" + position + "><div class='cell'></div></td>");
+        position++;
+       }
+       $("#grid").append("</tr>")
+    }
+    $("#grid").append("</table>");
+
+    return;
+}
+
+// function to return a random hex code
 var randomColor = function()
 {
     var hexCode = "#";

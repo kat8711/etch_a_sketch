@@ -2,24 +2,29 @@
     margin: 0 auto;
     padding: 10px auto;
     width: 600px;
+    text-align: center;
+
 }
 
 h1 {
     font-family: 'Pacifico', cursive;
     font-size: 50px;
     color: #444;
+    margin-bottom: 0px;
+    padding: 0px;
 }
 
 .buttons {
-    width: 400px;
-    margin: 0 auto;
+    width: 310px;
+    height: 40px;
+    margin: 10px auto;
 }
 
 button {
-    margin: 10px;
+    margin-right: 10px;
+    margin-bottom: 15px;
     height: 40px;
     width: 90px;
-    background-color: #aaa;
     border-style: none;
     color: #fff;
 }
@@ -33,13 +38,14 @@ button.selected {
 }
 
 #grid {
-    width: 750px;
+    width: 800px;
     margin: 0 auto;
+    background-color: pink;
 }
 
 td {
-    width: 40px;
-    height: 40px;
+    /* width: 50px;
+    height: 50px; */
     background-color: #eee;
     margin: 3px;
     display: inline-block;
@@ -55,6 +61,11 @@ table {
     border-width: 1px;
     border-style: solid;
     border-color: #444;
+}
+
+div.cell {
+    width: 40px;
+    height: 40px;
 }
 
 
