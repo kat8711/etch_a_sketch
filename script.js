@@ -6,36 +6,41 @@ $(document).ready(function()
     var position = 0;
     var id;
     var cell;
+
+    // set default color to 'rainbow'
     var color = "rainbow";
+    $('button#rainbow').attr('class','selected');
+    $('button#black').attr('class','unselected');
 
+    // draw the grid
     $("#grid").append("<table>")
-
     for (i = 1; i <= tableSize; i++)
     {
        $("#grid").append("<tr>");
-
        for (j = 1; j <= tableSize; j++)
        {
         $("#grid").append("<td id =" + position + "></td>");
         position++;
        }
-
        $("#grid").append("</tr>")
-
     }
-
     $("#grid").append("</table>");
 
-    console.log(randomColor());
 
+    // color scheme changes when buttons are clicked
     $('button#black').click(function() {
         color = "black";
+        $('button#rainbow').attr('class','unselected');
+        $('button#black').attr('class','selected');
     })
 
     $('button#rainbow').click(function() {
         color = "rainbow";
+        $('button#rainbow').attr('class','selected');
+        $('button#black').attr('class','unselected');
     })
 
+    // grid squares change color on mouseover
     $('td').mouseenter(function() {
         id = $(this).attr('id');
         cell = "td#" + id;
@@ -48,9 +53,18 @@ $(document).ready(function()
         }
     })
 
+    // reset button clears colors from the grid
     $('button#reset').click(function() {
         $('td').css('background-color','#ddd');
     })
+    $('button#reset').mousedown(function() {
+        $(this).attr('class','selected');
+    })
+    $('button#reset').mouseup(function() {
+        $(this).attr('class','unselected');
+    })
+
+
 });
 
 var randomColor = function()

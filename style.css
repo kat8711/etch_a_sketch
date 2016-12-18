@@ -19,7 +19,17 @@ button {
     margin: 10px;
     height: 40px;
     width: 90px;
+    background-color: #aaa;
+    border-style: none;
+    color: #fff;
+}
 
+button.unselected {
+    background-color: #bbb;
+}
+
+button.selected {
+    background-color: #444;
 }
 
 #grid {
@@ -30,7 +40,7 @@ button {
 td {
     width: 40px;
     height: 40px;
-    background-color: #ddd;
+    background-color: #eee;
     margin: 3px;
     display: inline-block;
 }
