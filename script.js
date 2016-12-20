@@ -1,26 +1,16 @@
 $(document).ready(function()
 {
-    var tableSize = prompt("Enter a grid size (2-64):");
     var id;
     var cell;
+    console.log("Beginning of script");
 
-    // adjust cell size based on tableSize
-    var cellSize = (800/tableSize);
-    console.log(cellSize);
-
-    $('h1').click(function() {
-        $('h1').css('color','orange');
-    $('div.cell').width(cellSize);
-    $('div.cell').height(cellSize);
-});
 
     // set default color to 'rainbow'
     var color = "rainbow";
     $('button#rainbow').attr('class','selected');
     $('button#black').attr('class','unselected');
 
-    drawGrid(tableSize);
-
+    drawGrid(16); //draw grid at default table size
 
     // color scheme changes when buttons are clicked
     $('button#black').click(function() {
@@ -59,12 +49,40 @@ $(document).ready(function()
         $(this).attr('class','unselected');
     })
 
+    // resize button prompts for new size and redraws grid
+    $('button#resize').click(function()
+    {
+
+        var newSize = null;
+        newSize = prompt("Enter a grid size (2-64):");
+        if (newSize != null)
+        {
+            $('td').css('background-color','#ddd');
+            $('div#grid').empty();
+            drawGrid(newSize);
+        }
+    })
+
+    $('button#resize').mousedown(function() {
+        $(this).attr('class','selected');
+    })
+    $('button#resize').mouseup(function() {
+        $(this).attr('class','unselected');
+
+
+
+
+    })
+
 
 });
 
 // function to draw the grid
 var drawGrid = function(tableSize) {
     var position = 0;
+
+
+
     $("#grid").append("<table>")
     for (i = 1; i <= tableSize; i++)
     {
@@ -77,6 +95,12 @@ var drawGrid = function(tableSize) {
        $("#grid").append("</tr>")
     }
     $("#grid").append("</table>");
+
+    // adjust cell size based on tableSize
+    var cellSize = (800 / tableSize) - 3;
+    console.log(cellSize);
+    $('div.cell').width(cellSize);
+    $('div.cell').height(cellSize);
 
     return;
 }
