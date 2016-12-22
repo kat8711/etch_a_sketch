@@ -2,7 +2,7 @@ $(document).ready(function()
 {
     var id;
     var cell;
-    console.log("Beginning of script");
+
 
 
     // set default color to 'rainbow'
@@ -26,7 +26,7 @@ $(document).ready(function()
     })
 
     // grid squares change color on mouseover
-    $('td').mouseenter(function() {
+   /*  $('td').mouseenter(function() {
         id = $(this).attr('id');
         cell = "td#" + id;
         if (color === "rainbow")
@@ -36,7 +36,7 @@ $(document).ready(function()
         else if (color === "black") {
         $(cell).css('background-color','#000');
         }
-    })
+    }) */
 
     // reset button clears colors from the grid
     $('button#reset').click(function() {
@@ -61,6 +61,20 @@ $(document).ready(function()
             $('div#grid').empty();
             drawGrid(newSize);
         }
+
+        // grid squares change color on mouseover
+     $('td').mouseenter(function() {
+        id = $(this).attr('id');
+        cell = "td#" + id;
+        if (color === "rainbow")
+        {
+        $(cell).css('background-color',randomColor());
+        }
+        else if (color === "black") {
+        $(cell).css('background-color','#000');
+        }
+    })
+
     })
 
     $('button#resize').mousedown(function() {
@@ -69,19 +83,48 @@ $(document).ready(function()
     $('button#resize').mouseup(function() {
         $(this).attr('class','unselected');
 
-
-
-
     })
+
+    // grid squares change color on mouseover
+     $('td').mouseenter(function() {
+        id = $(this).attr('id');
+        cell = "td#" + id;
+        if (color === "rainbow")
+        {
+        $(cell).css('background-color',randomColor());
+        }
+        else if (color === "black") {
+        $(cell).css('background-color','#000');
+        }
+    })
+
+     $('h1').click(function() {
+        $(this).css('background-color','orange');
+     })
+
 
 
 });
 
+var colorChange = function(square) {
+    // grid squares change color on mouseover
+
+        id = $(square).attr('id');
+        cell = "td#" + id;
+        if (color === "rainbow")
+        {
+        $(cell).css('background-color',randomColor());
+        }
+        else if (color === "black") {
+        $(cell).css('background-color','#000');
+        }
+
+}
+
+
 // function to draw the grid
 var drawGrid = function(tableSize) {
     var position = 0;
-
-
 
     $("#grid").append("<table>")
     for (i = 1; i <= tableSize; i++)
