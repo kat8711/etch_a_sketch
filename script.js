@@ -3,8 +3,6 @@ $(document).ready(function()
     var id;
     var cell;
 
-
-
     // set default color to 'rainbow'
     var color = "rainbow";
     $('button#rainbow').attr('class','selected');
@@ -13,34 +11,23 @@ $(document).ready(function()
     drawGrid(16); //draw grid at default table size
 
     // color scheme changes when buttons are clicked
+    // when Black buttons is clicked change color to black
     $('button#black').click(function() {
         color = "black";
         $('button#rainbow').attr('class','unselected');
         $('button#black').attr('class','selected');
     })
 
+    // when Rainbow button is clicked change color to random
     $('button#rainbow').click(function() {
         color = "rainbow";
         $('button#rainbow').attr('class','selected');
         $('button#black').attr('class','unselected');
     })
 
-    // grid squares change color on mouseover
-   /*  $('td').mouseenter(function() {
-        id = $(this).attr('id');
-        cell = "td#" + id;
-        if (color === "rainbow")
-        {
-        $(cell).css('background-color',randomColor());
-        }
-        else if (color === "black") {
-        $(cell).css('background-color','#000');
-        }
-    }) */
-
     // reset button clears colors from the grid
     $('button#reset').click(function() {
-        $('td').css('background-color','#ddd');
+        $('td').css('background-color','#f8f8f8');
     })
     $('button#reset').mousedown(function() {
         $(this).attr('class','selected');
@@ -50,39 +37,37 @@ $(document).ready(function()
     })
 
     // resize button prompts for new size and redraws grid
-    $('button#resize').click(function()
-    {
-
+    $('button#resize').click(function() {
         var newSize = null;
         newSize = prompt("Enter a grid size (2-64):");
         if (newSize != null)
         {
-            $('td').css('background-color','#ddd');
+            $('td').css('background-color','#f8f8f8');
             $('div#grid').empty();
             drawGrid(newSize);
         }
 
         // grid squares change color on mouseover
-     $('td').mouseenter(function() {
-        id = $(this).attr('id');
-        cell = "td#" + id;
-        if (color === "rainbow")
-        {
-        $(cell).css('background-color',randomColor());
-        }
-        else if (color === "black") {
-        $(cell).css('background-color','#000');
-        }
+         $('td').mouseenter(function() {
+            id = $(this).attr('id');
+            cell = "td#" + id;
+            if (color === "rainbow")
+            {
+            $(cell).css('background-color',randomColor());
+            }
+            else if (color === "black") {
+            $(cell).css('background-color','#000');
+            }
+        })
     })
 
-    })
-
+    // change color of Resize button to show clicking
     $('button#resize').mousedown(function() {
         $(this).attr('class','selected');
     })
+
     $('button#resize').mouseup(function() {
         $(this).attr('class','unselected');
-
     })
 
     // grid squares change color on mouseover
@@ -98,29 +83,7 @@ $(document).ready(function()
         }
     })
 
-     $('h1').click(function() {
-        $(this).css('background-color','orange');
-     })
-
-
-
 });
-
-var colorChange = function(square) {
-    // grid squares change color on mouseover
-
-        id = $(square).attr('id');
-        cell = "td#" + id;
-        if (color === "rainbow")
-        {
-        $(cell).css('background-color',randomColor());
-        }
-        else if (color === "black") {
-        $(cell).css('background-color','#000');
-        }
-
-}
-
 
 // function to draw the grid
 var drawGrid = function(tableSize) {
