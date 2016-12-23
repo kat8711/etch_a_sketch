@@ -14,6 +14,7 @@ $(document).ready(function()
     // when Grayscale button is clicked change to grayscale
     $('button#grayscale').click(function() {
         color = "grayscale";
+        // change which button appears selected
         $('button#rainbow').attr('class','unselected');
         $('button#grayscale').attr('class','selected');
     })
@@ -21,6 +22,7 @@ $(document).ready(function()
     // when Rainbow button is clicked change color to random
     $('button#rainbow').click(function() {
         color = "rainbow";
+        // change which button appears selected
         $('button#rainbow').attr('class','selected');
         $('button#grayscale').attr('class','unselected');
     })
@@ -29,6 +31,7 @@ $(document).ready(function()
     $('button#reset').click(function() {
         $('td').css('background-color','#f8f8f8');
     })
+    // change color of button on click
     $('button#reset').mousedown(function() {
         $(this).attr('class','selected');
     })
@@ -40,6 +43,7 @@ $(document).ready(function()
     $('button#resize').click(function() {
         var newSize = null;
         newSize = prompt("Enter a grid size (2-64):");
+        // if a new size is entered, clear grid and redraw
         if (newSize != null)
         {
             $('td').css('background-color','#f8f8f8');
@@ -51,10 +55,12 @@ $(document).ready(function()
          $('td').mouseenter(function() {
             id = $(this).attr('id');
             cell = "td#" + id;
+            // if Rainbow button is selected
             if (color === "rainbow")
             {
             $(cell).css('background-color',randomColor());
             }
+            // if Grayscale button is selected
             else if (color === "grayscale")
             {
             var shade = $(cell).css('background-color');
@@ -67,7 +73,6 @@ $(document).ready(function()
     $('button#resize').mousedown(function() {
         $(this).attr('class','selected');
     })
-
     $('button#resize').mouseup(function() {
         $(this).attr('class','unselected');
     })
@@ -76,27 +81,34 @@ $(document).ready(function()
      $('td').mouseenter(function() {
         id = $(this).attr('id');
         cell = "td#" + id;
+        // if Rainbow button is selected
         if (color === "rainbow")
         {
+        // make cell a random color
         $(cell).css('background-color',randomColor());
         }
+        // if Grayscale button is selected
         else if (color === "grayscale")
         {
+        // get color of current cell
         var shade = $(cell).css('background-color');
+        // make cell one shade darker
         $(cell).css('background-color',darkerShade(shade));
         }
     })
-
 });
 
 // function to draw the grid
 var drawGrid = function(tableSize) {
     var position = 0;
 
+    // add table
     $("#grid").append("<table>")
+    // add rows
     for (i = 1; i <= tableSize; i++)
     {
        $("#grid").append("<tr>");
+       // add cells in each row
        for (j = 1; j <= tableSize; j++)
        {
         $("#grid").append("<td id =" + position + "><div class='cell'></div></td>");
@@ -115,6 +127,7 @@ var drawGrid = function(tableSize) {
     return;
 }
 
+// function to return shade of gray darker than current shade
 var darkerShade = function(shade) {
     var hexCode;
 
@@ -163,11 +176,11 @@ var darkerShade = function(shade) {
 var randomColor = function()
 {
     var hexCode = "#";
-
+    // select a random number for each digit
     for (i = 1; i <= 6; i++) {
         var digit;
         var num = Math.floor(Math.random() * 17);
-
+        // for numbers greater than 9, assign letters
         if (num > 9)
         {
             switch(num)
@@ -194,13 +207,12 @@ var randomColor = function()
                     break;
             }
         }
+        // for numbers 0-8, use the number
         else
         {
             digit = num.toString();
         }
-
         hexCode = hexCode + digit;
     }
-
     return hexCode;
 }
