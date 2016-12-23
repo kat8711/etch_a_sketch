@@ -6,23 +6,23 @@ $(document).ready(function()
     // set default color to 'rainbow'
     var color = "rainbow";
     $('button#rainbow').attr('class','selected');
-    $('button#black').attr('class','unselected');
+    $('button#grayscale').attr('class','unselected');
 
     drawGrid(16); //draw grid at default table size
 
     // color scheme changes when buttons are clicked
-    // when Black buttons is clicked change color to black
-    $('button#black').click(function() {
-        color = "black";
+    // when Grayscale button is clicked change to grayscale
+    $('button#grayscale').click(function() {
+        color = "grayscale";
         $('button#rainbow').attr('class','unselected');
-        $('button#black').attr('class','selected');
+        $('button#grayscale').attr('class','selected');
     })
 
     // when Rainbow button is clicked change color to random
     $('button#rainbow').click(function() {
         color = "rainbow";
         $('button#rainbow').attr('class','selected');
-        $('button#black').attr('class','unselected');
+        $('button#grayscale').attr('class','unselected');
     })
 
     // reset button clears colors from the grid
@@ -55,8 +55,10 @@ $(document).ready(function()
             {
             $(cell).css('background-color',randomColor());
             }
-            else if (color === "black") {
-            $(cell).css('background-color','#000');
+            else if (color === "grayscale")
+            {
+            var shade = $(cell).css('background-color');
+            $(cell).css('background-color',darkerShade(shade));
             }
         })
     })
@@ -78,8 +80,10 @@ $(document).ready(function()
         {
         $(cell).css('background-color',randomColor());
         }
-        else if (color === "black") {
-        $(cell).css('background-color','#000');
+        else if (color === "grayscale")
+        {
+        var shade = $(cell).css('background-color');
+        $(cell).css('background-color',darkerShade(shade));
         }
     })
 
@@ -109,6 +113,50 @@ var drawGrid = function(tableSize) {
     $('div.cell').height(cellSize);
 
     return;
+}
+
+var darkerShade = function(shade) {
+    var hexCode;
+
+    switch(shade)
+    {
+        case "rgb(248, 248, 248)":
+            hexCode = '#d8d8d8';
+            break;
+        case "rgb(216, 216, 216)":
+            hexCode = '#c0c0c0';
+            break;
+        case "rgb(192, 192, 192)":
+            hexCode = '#a8a8a8';
+            break;
+        case "rgb(168, 168, 168)":
+            hexCode = '#909090';
+            break;
+        case "rgb(144, 144, 144)":
+            hexCode = '#787878';
+            break;
+        case "rgb(120, 120, 120)":
+            hexCode = '#606060';
+            break;
+        case "rgb(96, 96, 96)":
+            hexCode = '#484848';
+            break;
+        case "rgb(72, 72, 72)":
+            hexCode = '#303030';
+            break;
+        case "rgb(48, 48, 48)":
+            hexCode = "#181818";
+            break;
+        case "rgb(24, 24, 24)":
+            hexCode = "#000000";
+            break;
+        case "rgb(0, 0, 0)":
+            break;
+        default:
+            hexCode = '#d8d8d8';
+            break;
+    }
+    return hexCode;
 }
 
 // function to return a random hex code
