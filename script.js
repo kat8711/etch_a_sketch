@@ -29,7 +29,7 @@ $(document).ready(function()
 
     // reset button clears colors from the grid
     $('button#reset').click(function() {
-        $('td').css('background-color','#f8f8f8');
+        $('div.cell').css('background-color','#f8f8f8');
     })
     // change color of button on click
     $('button#reset').mousedown(function() {
@@ -46,15 +46,15 @@ $(document).ready(function()
         // if a new size is entered, clear grid and redraw
         if (newSize != null)
         {
-            $('td').css('background-color','#f8f8f8');
+            $('div.cell').css('background-color','#f8f8f8');
             $('div#grid').empty();
             drawGrid(newSize);
         }
 
         // grid squares change color on mouseover
-         $('td').mouseenter(function() {
+         $('div.cell').mouseenter(function() {
             id = $(this).attr('id');
-            cell = "td#" + id;
+            cell = "div.cell#" + id;
             // if Rainbow button is selected
             if (color === "rainbow")
             {
@@ -78,9 +78,9 @@ $(document).ready(function()
     })
 
     // grid squares change color on mouseover
-     $('td').mouseenter(function() {
+     $('div.cell').mouseenter(function() {
         id = $(this).attr('id');
-        cell = "td#" + id;
+        cell = "div.cell#" + id;
         // if Rainbow button is selected
         if (color === "rainbow")
         {
@@ -102,6 +102,27 @@ $(document).ready(function()
 var drawGrid = function(tableSize) {
     var position = 0;
 
+     // BEGIN DIV DRAW
+
+    $("#grid").append("<div id='table'>")
+    // add rows
+    for (i = 1; i <= tableSize; i++)
+    {
+       $("#grid").append("<div class='row'>");
+       // add cells in each row
+       for (j = 1; j <= tableSize; j++)
+       {
+        $("#grid").append("<div id =" + position + " class='cell'></div>");
+        position++;
+       }
+       $("#grid").append("</div>"); // end row
+    }
+    $("#grid").append("</div>"); // end table
+
+    // END DIV DRAW
+
+
+    /* // BEGIN TABLE DRAW
     // add table
     $("#grid").append("<table>")
     // add rows
@@ -117,6 +138,8 @@ var drawGrid = function(tableSize) {
        $("#grid").append("</tr>")
     }
     $("#grid").append("</table>");
+
+    // END TABLE DRAW */
 
     // adjust cell size based on tableSize
     var cellSize = (800 / tableSize) - 3;

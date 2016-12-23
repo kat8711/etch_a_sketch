@@ -46,7 +46,14 @@ button.selected {
     margin-bottom: 10px;
 }
 
-td {
+
+div.row {
+    display: block;
+    margin: 0px;
+    background-color: red;
+}
+
+/* td {
     background-color: #f8f8f8;
     margin: 0px 3px 0px 0px;
     display: inline-block;
@@ -64,11 +71,14 @@ table {
     border-spacing: 0px;
     -webkit-border-horizontal-spacing: 0px;
     -webkit-border-vertical-spacing: -1px;
-}
+} */
 
 div.cell {
     width: 40px;
     height: 40px;
+    display: inline-block;
+    background-color: #f8f8f8;
+    margin: 0px 3px 0px 0px;
 }
 
 
