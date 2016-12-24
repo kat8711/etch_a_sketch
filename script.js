@@ -111,8 +111,8 @@ $(document).ready(function()
 var drawGrid = function(tableSize) {
     var position = 0;
 
-     // BEGIN DIV DRAW
 
+    // draw the grid
     $("#grid").append("<div id='table'>")
     // add rows
     for (i = 1; i <= tableSize; i++)
@@ -127,28 +127,6 @@ var drawGrid = function(tableSize) {
        $("#grid").append("</div>"); // end row
     }
     $("#grid").append("</div>"); // end table
-
-    // END DIV DRAW
-
-
-    /* // BEGIN TABLE DRAW
-    // add table
-    $("#grid").append("<table>")
-    // add rows
-    for (i = 1; i <= tableSize; i++)
-    {
-       $("#grid").append("<tr>");
-       // add cells in each row
-       for (j = 1; j <= tableSize; j++)
-       {
-        $("#grid").append("<td id =" + position + "><div class='cell'></div></td>");
-        position++;
-       }
-       $("#grid").append("</tr>")
-    }
-    $("#grid").append("</table>");
-
-    // END TABLE DRAW */
 
     // adjust cell size based on tableSize
     var cellSize = (800 / tableSize) - 3;
@@ -165,12 +143,9 @@ var drawGrid = function(tableSize) {
         $('div.row').css('margin-top','-5px');
     }
 
-
+    // set size of cells
     $('div.cell').width(cellSize);
     $('div.cell').height(cellSize);
-
-
-
 
     return;
 }
