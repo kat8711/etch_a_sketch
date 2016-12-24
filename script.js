@@ -43,6 +43,15 @@ $(document).ready(function()
     $('button#resize').click(function() {
         var newSize = null;
         newSize = prompt("Enter a grid size (2-64):");
+
+        // enforce min and max sizes
+        if (newSize > 64) {
+            newSize = 64;
+        }
+        else if (newSize < 2) {
+            newSize = 2;
+        }
+
         // if a new size is entered, clear grid and redraw
         if (newSize != null)
         {
@@ -143,9 +152,25 @@ var drawGrid = function(tableSize) {
 
     // adjust cell size based on tableSize
     var cellSize = (800 / tableSize) - 3;
-    console.log(cellSize);
+
+    // adjust margins between rows based on table size
+    if (tableSize < 50) {
+        $('div.row').css('margin-top','-1px');
+    }
+    else if (tableSize < 60) {
+        $('div.row').css('margin-top','-2px');
+    }
+    // if tableSize < 65
+    else {
+        $('div.row').css('margin-top','-5px');
+    }
+
+
     $('div.cell').width(cellSize);
     $('div.cell').height(cellSize);
+
+
+
 
     return;
 }

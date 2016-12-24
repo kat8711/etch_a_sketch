@@ -49,7 +49,9 @@ button.selected {
 
 div.row {
     display: block;
+    padding: 0px;
     margin: 0px;
+    margin-top: -1px;
     background-color: red;
 }
 
