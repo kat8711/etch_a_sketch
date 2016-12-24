@@ -1,0 +1,1 @@
+This is an "Etch-a-Sketch"-style drawing tool created as part of the Web Development 101 section of The Odin Project.
